@@ -13,4 +13,13 @@ class Permit extends Model
         'permit_date',
         'file_id',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function file()
+    {
+        return $this->belongsTo(File::class, 'file_id');
+    }
 }

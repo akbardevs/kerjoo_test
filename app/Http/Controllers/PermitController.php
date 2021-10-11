@@ -16,7 +16,7 @@ class PermitController extends Controller
     //
     public function index()
     {
-        return User::with('type')->get();
+        return Permit::with(['user.type', 'file'])->get();
     }
 
     public function show(Request $request)
@@ -28,7 +28,7 @@ class PermitController extends Controller
                 'exists:users,id'
             ]
         ]);
-        return $request->route('id');
+        return Permit::with(['user.type', 'file'])->find($request->route('id'));
     }
 
     public function save(Request $request)
